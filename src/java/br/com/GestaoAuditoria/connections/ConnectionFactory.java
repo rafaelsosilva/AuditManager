@@ -27,14 +27,16 @@ public class ConnectionFactory {
         
         try{
             
-            Class.forName("com.mysql.jdbc.Driver");
-            serverName = "";
-            database = "";
-            url = "";
-            username = "";
-            password = "";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            serverName = "15.229.117.46";
+            database = "GADEV";
+            url = "jdbc:mysql://" + serverName + "/" + database;
+            username = "root";
+            password = "Oracle123";
             
             Connection connection = DriverManager.getConnection(url,username,password);
+            
+            System.out.println("Conectado ao MySQL com sucesso!!!");
             
             return connection;
             
