@@ -12,10 +12,10 @@ package br.com.GestaoAuditoria.models;
 public class Auditoria {
     
     private String nomeAuditoria;
-    private String nomeResponsavel;
-    private String nomeArea;
     private String dataInicio;
     private String dataFim;
+    private String nomeResponsavel;
+    private String ano;
     
     public void setNomeAuditoria(String nomeAuditoria){
         this.nomeAuditoria=nomeAuditoria;
@@ -23,23 +23,6 @@ public class Auditoria {
     
     public String getNomeAuditoria(){
         return this.nomeAuditoria;
-    }
-    
-    
-    public void nomeResponsavel(String nomeResponsavel){
-        this.nomeResponsavel=nomeResponsavel;
-    }
-    
-    public String getNomeResponsavel(){
-        return this.nomeResponsavel;
-    }
-    
-    public void setNomeArea(String nomeArea){
-        this.nomeArea=nomeArea;
-    }
-    
-    public String getNomeArea(){
-        return this.nomeArea;
     }
     
     public void setDataInicio(String dataInicio){
@@ -56,6 +39,22 @@ public class Auditoria {
     
     public String getDataFim(){
         return this.dataFim;
+    }
+    
+    public void setAno(String ano){
+        this.ano=ano;
+    }
+    
+    public String getAno(){
+        return this.ano;
+    }
+    
+    public void nomeResponsavel(String nomeResponsavel){
+        this.nomeResponsavel=nomeResponsavel;
+    }
+    
+    public String getNomeResponsavel(){
+        return this.nomeResponsavel;
     }
 
 }

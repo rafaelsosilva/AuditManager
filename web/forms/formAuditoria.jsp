@@ -12,6 +12,15 @@
         <title>Cadastro Auditoria</title>
     </head>
     <body>
-        
+        <form action="../responses/responseAuditoria.jsp">
+
+            <input type="text" name="nomeAuditoria" value="" /><br></br>
+            <input type="text" name="dataInicio" value="" /><br></br>
+            <input type="text" name="dataFim" value="" /><br></br>
+            <input type="text" name="ano" value="" /><br></br>
+            <input type="text" name="nomeResponsavel" value="" /><br></br>
+
+        </form>
+
     </body>
 </html>
