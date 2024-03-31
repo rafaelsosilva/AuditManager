@@ -22,6 +22,7 @@ import br.com.GestaoAuditoria.models.PlanoAcao;
 import br.com.GestaoAuditoria.models.Prorrogacao;
 import br.com.GestaoAuditoria.models.Relatorio;
 import br.com.GestaoAuditoria.models.Teste;
+import br.com.GestaoAuditoria.models.Walkthrough;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -34,6 +35,24 @@ public class Dao {
     public Dao() {
 
         this.connection = ConnectionFactory.getAwsMySQLConnection();
+    }
+    
+    public void addWalkthrough(Walkthrough objeto){
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_WALKTHROUGH(?,?,?)");
+            ps.setString(1, objeto.getDescricaoWalkthrough());
+            ps.setString(2, objeto.getNomeAuditoria());
+            ps.setString(3, objeto.getNomeAuditor());
+            
+            ps.execute();
+            ps.close();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
     }
 
     public void addTeste(Teste objeto) {

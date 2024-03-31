@@ -9,22 +9,21 @@ package br.com.GestaoAuditoria.testes;
  * @author rafaelsilva
  */
 
-import br.com.GestaoAuditoria.models.Prorrogacao;
+import br.com.GestaoAuditoria.models.Relatorio;
 import br.com.GestaoAuditoria.dao.Dao;
 
-public class AddProrrogacao {
+public class AddRelatorio {
     
-    public static void main(String args []){
+    public static void main (String args []){
         
-        Prorrogacao objeto = new Prorrogacao();
+        Relatorio objeto = new Relatorio();
         Dao dao = new Dao();
         
-        objeto.setDescricaoPlanoAcao("ATUALIZAR CERTIFICADO DIGITAL");
-        objeto.setPeriodoPlanoAcao("120 DIAS");
+        objeto.setDataEmissao("01/04/2024");
+        objeto.setRisco("ALTO");
         objeto.setNomeAuditor("RAFAEL SOUZA SILVA");
-        objeto.setNomeAprovador("RENATA SOUZA SILVA");
-        objeto.setDataAprovacao("01/02/2024");
-        dao.addProrrogacao(objeto);
+        objeto.setNomeAuditoria("DEVSECOPS");
+        dao.addRelatorio(objeto);
         
     }
     
