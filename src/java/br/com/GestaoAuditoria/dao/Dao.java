@@ -35,28 +35,28 @@ public class Dao {
 
         this.connection = ConnectionFactory.getAwsMySQLConnection();
     }
-    
-    public void addTeste(Teste objeto){
-        
-        try{
-            
+
+    public void addTeste(Teste objeto) {
+
+        try {
+
             PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_TESTE(?,?,?)");
             ps.setString(1, objeto.getDescricaoTeste());
             ps.setString(2, objeto.getNomeAuditor());
             ps.setString(3, objeto.getNomeAuditoria());
             ps.execute();
             ps.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
     }
-    
-    public void addRelatorio(Relatorio objeto){
-        
-        try{
-            
+
+    public void addRelatorio(Relatorio objeto) {
+
+        try {
+
             PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_RELATORIO(?,?,?,?)");
             ps.setString(1, objeto.getDataEmissao());
             ps.setString(2, objeto.getRisco());
@@ -64,17 +64,17 @@ public class Dao {
             ps.setString(4, objeto.getNomeAuditor());
             ps.execute();
             ps.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
     }
-    
-    public void addProrrogacao(Prorrogacao objeto){
-        
-        try{
-            
+
+    public void addProrrogacao(Prorrogacao objeto) {
+
+        try {
+
             PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PRORROGACAO(?,?,?,?,?)");
             ps.setString(1, objeto.getDescricaoPlanoAcao());
             ps.setString(2, objeto.getPeriodoPlanoAcao());
@@ -83,8 +83,8 @@ public class Dao {
             ps.setString(5, objeto.getDataAprovacao());
             ps.execute();
             ps.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -92,7 +92,7 @@ public class Dao {
     public void addPlanoAcao(PlanoAcao objeto) {
 
         try {
-            
+
             PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PLANO_ACAO(?,?,?,?,?)");
             ps.setString(1, objeto.getDescricaoApontamento());
             ps.setString(2, objeto.getDescricaoPlanoAcao());
@@ -101,8 +101,8 @@ public class Dao {
             ps.setString(5, objeto.getNomeAuditor());
             ps.execute();
             ps.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -111,7 +111,7 @@ public class Dao {
 
         try {
 
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_MATRIZRISCO(?,?,?)");
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_MATRIZ_RISCO(?,?,?)");
             ps.setString(1, objeto.getNomeMatrizRisco());
             ps.setString(2, objeto.getNomeAuditor());
             ps.setString(3, objeto.getNomeAuditoria());
@@ -192,25 +192,25 @@ public class Dao {
         }
 
     }
-    
-    public void addArea(Area objeto){
-        
-        try{
-            
+
+    public void addArea(Area objeto) {
+
+        try {
+
             PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_AREA(?)");
             ps.setString(1, objeto.getDescricaoArea());
             ps.execute();
             ps.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    public void addColaborador(Colaborador objeto){
-        
-        try{
-            
+
+    public void addColaborador(Colaborador objeto) {
+
+        try {
+
             PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_COLABORADOR(?,?,?,?)");
             ps.setString(1, objeto.getNomeColaborador());
             ps.setString(2, objeto.getStatus());
@@ -218,11 +218,11 @@ public class Dao {
             ps.setString(4, objeto.getDescricaoArea());
             ps.execute();
             ps.close();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
     }
 
 }
