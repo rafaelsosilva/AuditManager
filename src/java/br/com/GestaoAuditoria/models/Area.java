@@ -10,4 +10,14 @@ package br.com.GestaoAuditoria.models;
  */
 public class Area {
     
+    private String descricaoArea;
+    
+    public void setDescricaoArea(String descricaoArea){
+        this.descricaoArea=descricaoArea;
+    }
+    
+    public String getDescricaoArea(){
+        return this.descricaoArea;
+    }
+    
 }
