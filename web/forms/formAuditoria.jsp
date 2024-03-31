@@ -14,12 +14,12 @@
     <body>
         <form action="../responses/responseAuditoria.jsp">
 
-            <input type="text" name="nomeAuditoria" value="" /><br></br>
-            <input type="text" name="dataInicio" value="" /><br></br>
-            <input type="text" name="dataFim" value="" /><br></br>
-            <input type="text" name="ano" value="" /><br></br>
-            <input type="text" name="nomeResponsavel" value="" /><br></br>
-
+            Auditoria<input type="text" name="nomeAuditoria" value="" /><br></br>
+            Inicio<input type="text" name="dataInicio" value="" /><br></br>
+            Fim<input type="text" name="dataFim" value="" /><br></br>
+            Ano<input type="text" name="ano" value="" /><br></br>
+            Auditor<input type="text" name="nomeResponsavel" value="" /><br></br>
+            <input type="submit" value="OK" />
         </form>
 
     </body>

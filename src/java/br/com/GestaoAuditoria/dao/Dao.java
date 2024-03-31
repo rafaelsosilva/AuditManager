@@ -11,6 +11,7 @@ package br.com.GestaoAuditoria.dao;
 
 import br.com.GestaoAuditoria.connections.ConnectionFactory;
 import br.com.GestaoAuditoria.models.Cargo;
+import br.com.GestaoAuditoria.models.Auditoria;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,6 +24,25 @@ public class Dao {
     public Dao(){
         
         this.connection = ConnectionFactory.getAwsMySQLConnection();
+    }
+    
+    public void addAuditoria(Auditoria objeto){
+     
+        try{
+            
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_AUDITORIA(?,?,?,?,?)");
+            ps.setString(1, objeto.getNomeAuditoria());
+            ps.setString(2, objeto.getDataInicio());
+            ps.setString(3, objeto.getDataFim());
+            ps.setString(4, objeto.getAno());
+            ps.setString(5, objeto.getNomeResponsavel());
+            ps.execute();
+            ps.close();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
     }
     
     

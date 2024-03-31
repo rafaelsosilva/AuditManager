@@ -14,8 +14,9 @@ public class Auditoria {
     private String nomeAuditoria;
     private String dataInicio;
     private String dataFim;
-    private String nomeResponsavel;
     private String ano;
+    private String nomeResponsavel;
+    
     
     public void setNomeAuditoria(String nomeAuditoria){
         this.nomeAuditoria=nomeAuditoria;
@@ -41,20 +42,20 @@ public class Auditoria {
         return this.dataFim;
     }
     
+    public void setNomeResponsavel(String nomeResponsavel){
+        this.nomeResponsavel=nomeResponsavel;
+    }
+    
+    public String getNomeResponsavel(){
+        return this.nomeResponsavel;
+    }
+    
     public void setAno(String ano){
         this.ano=ano;
     }
     
     public String getAno(){
         return this.ano;
-    }
-    
-    public void nomeResponsavel(String nomeResponsavel){
-        this.nomeResponsavel=nomeResponsavel;
-    }
-    
-    public String getNomeResponsavel(){
-        return this.nomeResponsavel;
     }
 
 }

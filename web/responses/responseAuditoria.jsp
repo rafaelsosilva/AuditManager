@@ -12,7 +12,13 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <jsp:useBean id="FormAuditoria" scope="session" class="br.com.GestaoAuditoria.forms.FormAuditoria" />
+        <jsp:setProperty name="FormAuditoria" property="nomeAuditoria"/>
+        <jsp:setProperty name="FormAuditoria" property="dataInicio"/>
+        <jsp:setProperty name="FormAuditoria" property="dataFim"/>
+        <jsp:setProperty name="FormAuditoria" property="ano"/>
+        <jsp:setProperty name="FormAuditoria" property="nomeResponsavel"/>
         
     </body>
 </html>
