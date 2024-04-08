@@ -14,6 +14,8 @@ public class Apontamento {
     private String risco;
     private String nomeAuditor;
     private String nomeAuditoria;
+    private String statusRevisao;
+    private String descricaoRevisao;
     
     public void setDescricaoApontamento(String descricaoApontamento){
         this.descricaoApontamento=descricaoApontamento;
@@ -45,6 +47,22 @@ public class Apontamento {
     
     public String getNomeAuditoria(){
         return this.nomeAuditoria;
+    }
+    
+    public void setStatusRevisao(String statusRevisao){
+        this.statusRevisao=statusRevisao;
+    }
+    
+    public String getStatusRevisao(){
+        return this.statusRevisao;
+    }
+    
+    public void setDescricaoRevisao(String descricaoRevisao){
+        this.descricaoRevisao=descricaoRevisao;
+    }
+    
+    public String getDescricaoRevisao(){
+        return this.descricaoRevisao;
     }
     
 }

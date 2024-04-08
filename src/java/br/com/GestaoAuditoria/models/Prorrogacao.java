@@ -33,7 +33,7 @@ public class Prorrogacao {
     }
     
     public void setNomeAuditor(String nomeAuditor){
-        this.nomeAprovador=nomeAuditor;
+        this.nomeAuditor=nomeAuditor;
     }
     
     public String getNomeAuditor(){

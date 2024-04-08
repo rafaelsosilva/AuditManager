@@ -20,7 +20,7 @@ public class AddProrrogacao {
         Dao dao = new Dao();
         
         objeto.setDescricaoPlanoAcao("ATUALIZAR CERTIFICADO DIGITAL");
-        objeto.setPeriodoPlanoAcao("120 DIAS");
+        objeto.setPeriodoPlanoAcao("360 DIAS");
         objeto.setNomeAuditor("RAFAEL SOUZA SILVA");
         objeto.setNomeAprovador("RENATA SOUZA SILVA");
         objeto.setDataAprovacao("01/02/2024");

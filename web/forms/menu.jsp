@@ -1,6 +1,6 @@
 <%-- 
-    Document   : formAuditoria
-    Created on : 24 de mar. de 2024, 22:50:43
+    Document   : menu
+    Created on : 7 de abr. de 2024, 12:05:38
     Author     : rafaelsilva
 --%>
 
@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-
+        
         <link href="../css/style.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
@@ -18,7 +18,7 @@
 
     </head>
     <body>
-
+        
         <nav class="navbar bg-body-tertiary fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="images/safra.png" alt="Logo Safra"></a>
@@ -47,15 +47,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Modo Noturno</a>
                             </li>
-
+                            
                     </div>
-
-
                 </div>
             </div>
-
         </nav>
-
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
     </body>

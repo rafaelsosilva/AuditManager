@@ -37,6 +37,26 @@ public class Dao {
         this.connection = ConnectionFactory.getAwsMySQLConnection();
     }
     
+    public void revisaoApontamento(Apontamento objeto){
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_REVISAO_APONTAMENTO(?,?,?,?)");
+            
+            ps.setString(1, objeto.getDescricaoApontamento());
+            ps.setString(2, objeto.getStatusRevisao());
+            ps.setString(3, objeto.getDescricaoRevisao());
+            ps.setString(4, objeto.getNomeAuditor());
+            ps.execute();
+            ps.close();
+        
+        }catch(SQLException e){
+            
+            e.printStackTrace();
+        }
+        
+    }
+    
     public void addWalkthrough(Walkthrough objeto){
         
         try{
