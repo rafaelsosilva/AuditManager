@@ -15,6 +15,8 @@ public class PlanoAcao {
     private String dataInicio;
     private String dataVencimento;
     private String nomeAuditor;
+    private String statusRevisao;
+    private String descricaoRevisor;
     
     public void setDescricaoApontamento(String descricaoApontamento){
         this.descricaoApontamento=descricaoApontamento;
@@ -54,5 +56,21 @@ public class PlanoAcao {
     
     public String getNomeAuditor(){
         return this.nomeAuditor;
+    }
+    
+    public void setStatusRevisao(String statusRevisao){
+        this.statusRevisao=statusRevisao;
+    }
+    
+    public String getStatusRevisao(){
+        return this.statusRevisao;
+    }
+    
+    public void setDescricaoRevisor(String descricaoRevisor){
+        this.descricaoRevisor=descricaoRevisor;
+    }
+    
+    public String getDescricaoRevisor(){
+        return this.descricaoRevisor;
     }
 }

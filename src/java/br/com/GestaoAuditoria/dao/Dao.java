@@ -37,6 +37,67 @@ public class Dao {
         this.connection = ConnectionFactory.getAwsMySQLConnection();
     }
     
+    public void revisaoTeste(Teste objeto){
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_REVISAO_TESTE(?,?,?,?)");
+            
+            ps.setString(1, objeto.getDescricaoTeste());
+            ps.setString(2, objeto.getNomeAuditor());
+            ps.setString(3, objeto.getStatusRevisao());
+            ps.setString(4, objeto.getDescricaoRevisao());
+            
+            ps.execute();
+            ps.close();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public void revisaoProrrogacao(Prorrogacao objeto){
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_REVISAO_PRORROGACAO(?,?,?,?)");
+            
+            ps.setString(1, objeto.getDescricaoPlanoAcao());
+            ps.setString(2, objeto.getNomeAuditor());
+            ps.setString(3, objeto.getStatusRevisao());
+            ps.setString(4, objeto.getDescricaoRevisao());
+            
+            ps.execute();
+            ps.close();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public void revisaoPlanoAcao(PlanoAcao objeto){
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_REVISAO_PLANO_ACAO(?,?,?,?)");
+            
+            ps.setString(1, objeto.getDescricaoPlanoAcao());
+            ps.setString(2, objeto.getNomeAuditor());
+            ps.setString(3, objeto.getStatusRevisao());
+            ps.setString(4, objeto.getDescricaoRevisor());
+            
+            ps.execute();
+            ps.close();
+            
+        
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+    }
+    
     public void revisaoApontamento(Apontamento objeto){
         
         try{

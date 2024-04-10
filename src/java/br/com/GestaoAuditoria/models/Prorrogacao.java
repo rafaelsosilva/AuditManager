@@ -15,6 +15,8 @@ public class Prorrogacao {
     private String nomeAuditor;
     private String nomeAprovador;
     private String dataAprovacao;
+    private String statusRevisao;
+    private String descricaoRevisao;
     
     public void setDescricaoPlanoAcao(String descricaoPlanoAcao){
         this.descricaoPlanoAcao=descricaoPlanoAcao;
@@ -55,4 +57,22 @@ public class Prorrogacao {
     public String getDataAprovacao(){
         return this.dataAprovacao;
     }
+    
+    public void setStatusRevisao(String statusRevisao){
+        this.statusRevisao=statusRevisao;
+    }
+    
+    public String getStatusRevisao(){
+        return this.statusRevisao;
+    }
+    
+    
+    public void setDescricaoRevisao(String descricaoRevisao){
+        this.descricaoRevisao=descricaoRevisao;
+    }
+    
+    public String getDescricaoRevisao(){
+        return this.descricaoRevisao;
+    }
+    
 }
