@@ -27,8 +27,8 @@ public class FormAuditoria {
         this.nomeAuditoria="";
         this.dataInicio="";
         this.dataFim="";
-        this.ano="";
         this.nomeResponsavel="";
+        
         this.auditoria = new Auditoria();
         this.dao = new Dao();
         
@@ -59,15 +59,6 @@ public class FormAuditoria {
     
     public String getDataFim(){
         return this.dataFim;
-    }
-    
-    public void setAno(String ano){
-        this.ano=ano;
-        this.auditoria.setAno(ano);
-    }
-    
-    public String getAno(){
-        return this.ano;
     }
     
     public void setNomeResponsavel(String nomeResponsavel){

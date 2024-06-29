@@ -19,7 +19,7 @@ public class AddApontamento {
         Apontamento objeto = new Apontamento();
         Dao dao = new Dao();
         
-        objeto.setDescricaoApontamento("CERTIFICADO DIGITAL VENCIDO");
+        objeto.setDescricaoApontamento("CERTIFICADO DIGITAL INVALIDO");
         objeto.setNomeAuditor("RAFAEL SOUZA SILVA");
         objeto.setNomeAuditoria("DEVSECOPS");
         objeto.setRisco("ALTO");

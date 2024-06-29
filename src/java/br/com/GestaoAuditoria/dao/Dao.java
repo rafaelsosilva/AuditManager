@@ -263,12 +263,11 @@ public class Dao {
 
         try {
 
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_AUDITORIA(?,?,?,?,?)");
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_AUDITORIA(?,?,?,?)");
             ps.setString(1, objeto.getNomeAuditoria());
             ps.setString(2, objeto.getDataInicio());
             ps.setString(3, objeto.getDataFim());
-            ps.setString(4, objeto.getAno());
-            ps.setString(5, objeto.getNomeResponsavel());
+            ps.setString(4, objeto.getNomeResponsavel());
             ps.execute();
             ps.close();
 

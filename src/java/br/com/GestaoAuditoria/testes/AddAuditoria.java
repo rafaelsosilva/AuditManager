@@ -19,10 +19,9 @@ public class AddAuditoria {
         Auditoria objeto = new Auditoria();
         Dao dao = new Dao();
         
-        objeto.setNomeAuditoria("ICAAP");
+        objeto.setNomeAuditoria("ICAAP - 2023");
         objeto.setDataInicio("01/01/2024");
         objeto.setDataFim("01/05/2024");
-        objeto.setAno("2024");
         objeto.setNomeResponsavel("RAFAEL SOUZA SILVA");
         dao.addAuditoria(objeto);
         

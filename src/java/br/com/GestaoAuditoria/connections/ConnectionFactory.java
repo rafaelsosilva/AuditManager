@@ -28,7 +28,7 @@ public class ConnectionFactory {
         try{
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            serverName = "15.229.117.46";
+            serverName = "127.0.0.1";
             database = "GADEV";
             url = "jdbc:mysql://" + serverName + "/" + database;
             username = "root";
