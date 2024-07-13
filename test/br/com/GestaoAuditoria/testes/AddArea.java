@@ -19,7 +19,7 @@ public class AddArea {
         Area objeto = new Area();
         Dao dao = new Dao();
         
-        objeto.setDescricaoArea("FINANCEIRA");
+        objeto.setDescricaoArea("BACK OFFICE");
         dao.addArea(objeto);
         
     }
