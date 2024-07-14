@@ -16,6 +16,33 @@ public class Apontamento {
     private String nomeAuditoria;
     private String statusRevisao;
     private String descricaoRevisao;
+    private String tituloApontamento;
+    private String causa;
+    private String consequencia;
+    
+    public void setTituloApontamento(String tituloApontamento){
+        this.tituloApontamento=tituloApontamento;
+    }
+    
+    public String getTituloApontamento(){
+        return this.tituloApontamento;
+    }
+    
+    public void setCausa(String causa){
+        this.causa=causa;
+    }
+    
+    public String getCausa(){
+        return this.causa;
+    }
+    
+    public void setConsequencia(String consequencia){
+        this.consequencia=consequencia;
+    }
+    
+    public String getConsequencia(){
+        return this.consequencia;
+    }
     
     public void setDescricaoApontamento(String descricaoApontamento){
         this.descricaoApontamento=descricaoApontamento;
