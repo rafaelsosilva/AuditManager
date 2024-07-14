@@ -1,6 +1,6 @@
 <%-- 
-    Document   : formCheckPoint
-    Created on : 31 de mar. de 2024, 14:17:10
+    Document   : formApontamento
+    Created on : 31 de mar. de 2024, 14:17:27
     Author     : rafaelsilva
 --%>
 
@@ -9,17 +9,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
         <link href="../css/style.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-        
-        <title>Check Point</title>
-        
+        <title>Apontamento</title>
+
+        <script>
+            function cadastrarCheckPoint() {
+
+                var varDescricaoCheckPoint = $("#descricaoCheckPoint").val();
+                var varNomeAuditor = $("#nomeAuditor").val();
+                var varNomeAuditoria = $("#nomeAuditoria").val();
+
+                $.ajax({
+                    type: 'post',
+                    url: '../responses/responseCheckPoint.jsp?descricaoCheckPoint=' + varDescricaoCheckPoint + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    success: function (data) {
+                        Alert("Cadastrado com Sucesso!!");
+                    }
+                });
+            }
+        </script>
+
     </head>
-    
+
     <style>
         input[type=text], select {
             width: 100%;
@@ -60,57 +76,108 @@
             margin-right: auto;
         }
     </style>
-    
+
     <body>
-        
-        <div class="container">
-            
-            <a class="navbar-brand" href="#"></a>
-            
-            <form action="menu.jsp" method="POST">
 
-                <label for="country">Auditoria</label>
-                <select id="country" name="country">
-                    <option value="australia">DevSecOps</option>
-                    <option value="canada">Safra Invest - Corretora</option>
-                    <option value="usa">Arquitetura de TI</option>
+        <nav class="navbar bg-body-tertiary fixed-top">
+
+            <div class="container-fluid">
+
+                <!-- comment 
+             <img src="../images/safra.png" alt="Logo Safra">
+             <img src="images/safra.png" alt="Logo Safra">
+                -->
+                <a class="navbar-brand" href="#"></a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+
+
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" href="formAuditoria.jsp">Cadastro de Auditorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="formApontamento.jsp">Apontamentos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="formPlanoAcao.jsp">Planos de Acao</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formProrrogacao.jsp">Prorrogacao de Plano de Acao</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formWalkthrough.jsp">Walkthrough</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formCheckPoint.jsp">Check Point</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formMatrizRisco.jsp">Matriz de Riscos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formTeste.jsp">Cadastro de Testes</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formRelatorio.jsp">Relatorio de Auditoria</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="../index.html">Sair</a>
+                            </li>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <br> <br> <br> <br> <br> <br> 
+
+        <form method="POST">
+
+            <div class="container">
+
+                <a class="navbar-brand" href="#"></a>
+
+                <label for="fname">CHECK POINT</label>
+                <input type="text" id="descricaoCheckPoint" name="descricaoApontamento" placeholder="Desricao Check Point">
+
+                <label for="nomeAuditor">Nome Auditor</label>
+                <select id="nomeAuditor" name="nomeAuditor">
+                    <option value="">SELECIONE</option>
+                    <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
                 </select>
 
-                <label for="lname">Titulo Check Point</label>
-                <input type="text" id="dataInicio" name="dataInicio" placeholder="Titulo Check Point">
+                <label for="nomeAuditoria">Auditoria</label>
+                <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
+                
+                <input type="submit" onclick="cadastrarCheckPoint()">
 
-                <label for="lname">Descricao Check Point</label>
-                <input type="text" id="dataFim" name="dataFim" placeholder="Descricao Check Point">
-                
-                <label for="country">Tipo Check Point</label>
-                <select id="country" name="country">
-                    <option value="australia">CKP1</option>
-                    <option value="canada">CKP2</option>
-                </select>
+            </div>
 
-                <label for="country">Participantes</label>
-                <select id="country" name="country">
-                    <option value="australia">Eduardo Teles</option>
-                    <option value="canada">Haroldo Domingo de Paula</option>
-                    <option value="usa">Eduardo Takahashi</option>
-                </select>
-                
-                <form action="menu.jsp">
-                    <input type="submit" value="Cadastro">
-                </form>
-
-                
-                <form action="menu.jsp">
-                    <input type="submit" value="Menu">
-                </form>
-                
-                
-            </form>
-            
-        </div>
+        </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
-        
     </body>
+
 </html>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : formMatrizRisco
-    Created on : 31 de mar. de 2024, 14:18:25
+    Document   : formApontamento
+    Created on : 31 de mar. de 2024, 14:17:27
     Author     : rafaelsilva
 --%>
 
@@ -10,13 +10,33 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../css/style.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-        
-        <title>Matriz de Risco</title>
+
+        <title>Apontamento</title>
+
+        <script>
+            function cadastrarApontamento() {
+
+                var varDescricaoApontamento = $("#descricaoApontamento").val();
+                var varRisco = $("#risco").val();
+                var varNomeAuditor = $("#nomeAuditor").val();
+                var varNomeAuditoria = $("#nomeAuditoria").val();
+
+                $.ajax({
+                    type: 'post',
+                    url: '../responses/responseApontamento.jsp?descricaoApontamento=' + varDescricaoApontamento + '&risco=' + varRisco + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    success: function (data) {
+                        Alert("Cadastrado com Sucesso!!");
+                    }
+                });
+            }
+        </script>
+
     </head>
-    
+
     <style>
         input[type=text], select {
             width: 100%;
@@ -57,50 +77,115 @@
             margin-right: auto;
         }
     </style>
-    
+
     <body>
-        
-        <div class="container">
-            
-            <a class="navbar-brand" href="#"></a>
-            
-            <form action="menu.jsp" method="POST">
 
-                <label for="country">Auditoria</label>
-                <select id="country" name="country">
-                    <option value="australia">DEVSECOPS</option>
-                    <option value="canada">SAFRA INVEST - CORRETORA</option>
-                    <option value="usa">AGENCIA LUXEMBURGO</option>
+        <nav class="navbar bg-body-tertiary fixed-top">
+
+            <div class="container-fluid">
+
+                <!-- comment 
+             <img src="../images/safra.png" alt="Logo Safra">
+             <img src="images/safra.png" alt="Logo Safra">
+                -->
+                <a class="navbar-brand" href="#"></a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+
+
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" href="formAuditoria.jsp">Cadastro de Auditorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="formApontamento.jsp">Apontamentos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="formPlanoAcao.jsp">Planos de Acao</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formProrrogacao.jsp">Prorrogacao de Plano de Acao</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formWalkthrough.jsp">Walkthrough</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formCheckPoint.jsp">Check Point</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formMatrizRisco.jsp">Matriz de Riscos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formTeste.jsp">Cadastro de Testes</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="formRelatorio.jsp">Relatorio de Auditoria</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="../index.html">Sair</a>
+                            </li>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <br> <br> <br> <br> <br> <br> 
+
+        <form method="POST">
+
+            <div class="container">
+
+                <a class="navbar-brand" href="#"></a>
+
+                <label for="fname">Titulo Apontamento</label>
+                <input type="text" id="descricaoApontamento" name="descricaoApontamento" placeholder="Titulo Apontamento">
+
+                <label for="Risco">Risco</label>
+                <select id="risco" name="country">
+                    <option value="ALTO">Alto</option>
+                    <option value="MEDIO">Medio</option>
+                    <option value="BAIXO">Baixo</option>
                 </select>
-                
-                <label for="lname">Titulo Matriz de Risco</label>
-                <input type="text" id="dataInicio" name="dataInicio" placeholder="Titulo Matriz de Risco">
 
-                <label for="lname">Descricao Matriz de Risco</label>
-                <input type="text" id="dataFim" name="dataFim" placeholder="Descricao Matriz de Risco">
-
-                <label for="country">Aprovador</label>
-                <select id="country" name="country">
-                    <option value="australia">Paulo Guilherme Yokota</option>
-                    <option value="canada">Flavia Youseff</option>
-                    <option value="usa">Priscila Souza</option>
+                <label for="nomeAuditor">Nome Auditor</label>
+                <select id="nomeAuditor" name="nomeAuditor">
+                    <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
+                    <option value="RAFAEL SOUZA SILVA">PAULO YOKOTA</option>
                 </select>
-                
-                <form action="menu.jsp">
-                    <input type="submit" value="Cadastro">
-                </form>
 
+                <label for="nomeAuditoria">Auditoria</label>
+                <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
                 
-                <form action="menu.jsp">
-                    <input type="submit" value="Menu">
-                </form>
-                
-                
-            </form>
-            
-        </div>
+                <input type="submit" onclick="cadastrarApontamento()">
+
+            </div>
+
+        </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
     </body>
+
 </html>

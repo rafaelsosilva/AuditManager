@@ -104,9 +104,7 @@
 
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Relatorios</a>
-                            </li>
+                           
                             <li class="nav-item">
                                 <a class="nav-link" href="formAuditoria.jsp">Cadastro de Auditorias</a>
                             </li>
@@ -153,7 +151,7 @@
 
         </nav>
 
-        <br> <br> <br> <br> <br> <br> 
+        <br> <br> <br> <br> 
 
         <form method="POST">
 
@@ -161,23 +159,33 @@
 
                 <a class="navbar-brand" href="#"></a>
 
-                <label for="fname">Titulo Apontamento</label>
+               
                 <input type="text" id="descricaoApontamento" name="descricaoApontamento" placeholder="Titulo Apontamento">
+                
+                
+                <textarea class="form-control" id="causa" rows="2" placeholder="Descricao da Causa"></textarea>
+                
+                
+                <textarea class="form-control" id="consequencia" rows="2" placeholder="Descricao da Consequencia"></textarea>
+                
+                
+                <textarea class="form-control" id="recomendacao" rows="2" placeholder="Descricao da Recomendacao"></textarea>
 
-                <label for="Risco">Risco</label>
+              
                 <select id="risco" name="country">
-                    <option value="ALTO">Alto</option>
-                    <option value="MEDIO">Medio</option>
-                    <option value="BAIXO">Baixo</option>
+                    <option value="">SELECIONE O RISCO</option>
+                    <option value="ALTO">ALTO</option>
+                    <option value="MEDIO">MEDIO</option>
+                    <option value="BAIXO">BAIXO</option>
                 </select>
 
-                <label for="nomeAuditor">Nome Auditor</label>
+               
                 <select id="nomeAuditor" name="nomeAuditor">
+                    <option value="RAFAEL SOUZA SILVA">SELECIONE O AUDITOR</option>
                     <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
-                    <option value="RAFAEL SOUZA SILVA">PAULO YOKOTA</option>
                 </select>
 
-                <label for="nomeAuditoria">Auditoria</label>
+              
                 <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
                 
                 <input type="submit" onclick="cadastrarApontamento()">
