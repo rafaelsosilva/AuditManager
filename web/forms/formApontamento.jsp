@@ -24,10 +24,19 @@
                 var varRisco = $("#risco").val();
                 var varNomeAuditor = $("#nomeAuditor").val();
                 var varNomeAuditoria = $("#nomeAuditoria").val();
+                var varCausa = $("#causa").val();
+                var varConsequencia = $("#consequencia").val();
+                var varRecomendacao = $("#recomendacao").val();
 
                 $.ajax({
                     type: 'post',
-                    url: '../responses/responseApontamento.jsp?descricaoApontamento=' + varDescricaoApontamento + '&risco=' + varRisco + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    url: '../responses/responseApontamento.jsp?descricaoApontamento=' + varDescricaoApontamento
+                            + '&risco=' + varRisco
+                            + '&nomeAuditor=' + varNomeAuditor
+                            + '&nomeAuditoria=' + varNomeAuditoria
+                            + '&causa=' + varCausa
+                            + '&consequencia=' + varConsequencia
+                            + '&recomendacao=' + varRecomendacao,
                     success: function (data) {
                         Alert("Cadastrado com Sucesso!!");
                     }
@@ -104,7 +113,7 @@
 
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                           
+
                             <li class="nav-item">
                                 <a class="nav-link" href="formAuditoria.jsp">Cadastro de Auditorias</a>
                             </li>
@@ -151,7 +160,7 @@
 
         </nav>
 
-        <br> <br> <br> <br> 
+        <br> <br> <br>
 
         <form method="POST">
 
@@ -159,19 +168,19 @@
 
                 <a class="navbar-brand" href="#"></a>
 
-               
+
                 <input type="text" id="descricaoApontamento" name="descricaoApontamento" placeholder="Titulo Apontamento">
-                
-                
+
+
                 <textarea class="form-control" id="causa" rows="2" placeholder="Descricao da Causa"></textarea>
-                
-                
+
+
                 <textarea class="form-control" id="consequencia" rows="2" placeholder="Descricao da Consequencia"></textarea>
-                
-                
+
+
                 <textarea class="form-control" id="recomendacao" rows="2" placeholder="Descricao da Recomendacao"></textarea>
 
-              
+
                 <select id="risco" name="country">
                     <option value="">SELECIONE O RISCO</option>
                     <option value="ALTO">ALTO</option>
@@ -179,15 +188,15 @@
                     <option value="BAIXO">BAIXO</option>
                 </select>
 
-               
+
                 <select id="nomeAuditor" name="nomeAuditor">
                     <option value="RAFAEL SOUZA SILVA">SELECIONE O AUDITOR</option>
                     <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
                 </select>
 
-              
+
                 <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
-                
+
                 <input type="submit" onclick="cadastrarApontamento()">
 
             </div>

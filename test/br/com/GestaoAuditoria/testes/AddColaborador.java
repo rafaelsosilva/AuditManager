@@ -19,9 +19,9 @@ public class AddColaborador {
         Colaborador objeto = new Colaborador();
         Dao dao = new Dao();
         
-        objeto.setNomeColaborador("RENATA SOUZA SILVA");
+        objeto.setNomeColaborador("RAFAEL SOUZA SILVA");
         objeto.setStatus("ATIVO");
-        objeto.setDescricaoCargo("AUDITOR PLENO");
+        objeto.setDescricaoCargo("AUDITOR ESPECIALISTA");
         objeto.setDescricaoArea("AUDITORIA");
         dao.addColaborador(objeto);
         

@@ -18,8 +18,9 @@ public class FormApontamento {
     private String risco;
     private String nomeAuditor;
     private String nomeAuditoria;
-    private String statusRevisao;
-    private String descricaoRevisao;
+    private String causa;
+    private String consequencia;
+    private String recomendacao;
     private Apontamento objeto;
     private Dao dao;
     
@@ -29,6 +30,9 @@ public class FormApontamento {
         this.risco="";
         this.nomeAuditor="";
         this.nomeAuditoria="";
+        this.causa="";
+        this.consequencia="";
+        this.recomendacao="";
         
         this.objeto = new Apontamento();
         this.dao = new Dao();
@@ -53,6 +57,33 @@ public class FormApontamento {
         return this.risco;
     }
     
+    public void setCausa(String causa){
+        this.causa=causa;
+        this.objeto.setCausa(causa);
+    }
+    
+    public String getCausa(){
+        return this.causa;
+    }
+    
+    public void setConsequencia(String consequencia){
+        this.consequencia=consequencia;
+        this.objeto.setConsequencia(consequencia);
+    }
+    
+    public String getConsequencia(){
+        return this.consequencia;
+    }
+    
+    public void setRecomendacao(String recomendacao){
+        this.recomendacao=recomendacao;
+        this.objeto.setRecomendacao(recomendacao);
+    }
+    
+    public String getRecomendacao(){
+        return this.recomendacao;
+    }
+    
     public void setNomeAuditor(String nomeAuditor){
         this.nomeAuditor=nomeAuditor;
         this.objeto.setNomeAuditor(nomeAuditor);
@@ -65,12 +96,14 @@ public class FormApontamento {
     public void setNomeAuditoria(String nomeAuditoria){
         this.nomeAuditoria=nomeAuditoria;
         this.objeto.setNomeAuditoria(nomeAuditoria);
-        dao.addApontamento(objeto);
+        this.dao.addApontamento(objeto);
+   
     }
     
     public String getNomeAuditoria(){
         return this.nomeAuditoria;
     }
+    
     
     
   

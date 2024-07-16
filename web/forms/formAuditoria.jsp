@@ -120,7 +120,7 @@
                 <a class="navbar-brand" href="#"></a>
 
                 <label for="fname">Nome Auditoria</label>
-                <input type="text" id="nomeAuditoria" name="descricaoApontamento" placeholder="Titulo Apontamento">
+                <input type="text" id="nomeAuditoria" name="descricaoApontamento" placeholder="Nome da Auditoria">
 
                 <label for="fname">Data Inicio</label>
                 <input type="text" id="dataInicio" name="descricaoApontamento" placeholder="Data Inicio">
@@ -130,8 +130,8 @@
 
                 <label for="nomeAuditor">Nome Responsavel</label>
                 <select id="nomeResponsavel" name="nomeAuditor">
+                    <option value="RAFAEL SOUZA SILVA">SELECIONE O RESPONSAVEL</option>
                     <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
-                    <option value="RAFAEL SOUZA SILVA">PAULO YOKOTA</option>
                 </select>
 
                 <input type="submit" onclick="cadastrarAuditoria()">

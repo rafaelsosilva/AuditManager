@@ -19,6 +19,15 @@ public class Apontamento {
     private String tituloApontamento;
     private String causa;
     private String consequencia;
+    private String recomendacao;
+    
+    public void setRecomendacao(String recomendacao){
+        this.recomendacao=recomendacao;
+    }
+    
+    public String getRecomendacao(){
+        return this.recomendacao;
+    }
     
     public void setTituloApontamento(String tituloApontamento){
         this.tituloApontamento=tituloApontamento;

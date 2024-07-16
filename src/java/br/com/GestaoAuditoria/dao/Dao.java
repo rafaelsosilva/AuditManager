@@ -239,16 +239,19 @@ public class Dao {
         }
 
     }
-
+    
     public void addApontamento(Apontamento objeto) {
 
         try {
 
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_APONTAMENTO(?,?,?,?)");
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_APONTAMENTO_00_02(?,?,?,?,?,?,?)");
             ps.setString(1, objeto.getDescricaoApontamento());
             ps.setString(2, objeto.getRisco());
             ps.setString(3, objeto.getNomeAuditor());
             ps.setString(4, objeto.getNomeAuditoria());
+            ps.setString(5, objeto.getCausa());
+            ps.setString(6, objeto.getConsequencia());
+            ps.setString(7, objeto.getRecomendacao());
             ps.execute();
             ps.close();
 
@@ -258,7 +261,7 @@ public class Dao {
         }
 
     }
-
+    
     public void addAuditoria(Auditoria objeto) {
 
         try {
