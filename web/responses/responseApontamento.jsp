@@ -14,10 +14,16 @@
     <body>
         
         <jsp:useBean id="FormApontamento" scope="session" class="br.com.GestaoAuditoria.forms.FormApontamento" />
+        <jsp:setProperty name="FormApontamento" property="tituloApontamento"/>
         <jsp:setProperty name="FormApontamento" property="descricaoApontamento"/>
-        <jsp:setProperty name="FormApontamento" property="risco"/>
         <jsp:setProperty name="FormApontamento" property="nomeAuditor"/>
         <jsp:setProperty name="FormApontamento" property="nomeAuditoria"/>
+        <jsp:setProperty name="FormApontamento" property="risco"/>
+        <jsp:setProperty name="FormApontamento" property="causa"/>
+        <jsp:setProperty name="FormApontamento" property="consequencia"/>
+        <jsp:setProperty name="FormApontamento" property="recomendacao"/>
+        
+        
         
     </body>
 </html>

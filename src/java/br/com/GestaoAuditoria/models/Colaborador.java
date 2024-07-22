@@ -14,6 +14,15 @@ public class Colaborador {
     private String status;
     private String descricaoCargo;
     private String descricaoArea;
+    private String nomeAuditor;
+    
+    public void setNomeAuditor(String nomeAuditor){
+        this.nomeAuditor=nomeAuditor;
+    }
+    
+    public String getNomeAuditor(){
+        return this.nomeAuditor;
+    }
     
     public void setNomeColaborador(String nomeColaborador){
         this.nomeColaborador=nomeColaborador;

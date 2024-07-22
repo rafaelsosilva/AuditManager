@@ -27,6 +27,10 @@ import br.com.GestaoAuditoria.models.Walkthrough;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dao {
 
@@ -244,14 +248,19 @@ public class Dao {
 
         try {
 
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_APONTAMENTO_00_02(?,?,?,?,?,?,?)");
-            ps.setString(1, objeto.getDescricaoApontamento());
-            ps.setString(2, objeto.getRisco());
-            ps.setString(3, objeto.getNomeAuditor());
-            ps.setString(4, objeto.getNomeAuditoria());
-            ps.setString(5, objeto.getCausa());
-            ps.setString(6, objeto.getConsequencia());
-            ps.setString(7, objeto.getRecomendacao());
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_APONTAMENTO_00_02(?,?,?,?,?,?,?,?)");
+            
+            ps.setString(1, objeto.getTituloApontamento());
+            ps.setString(2, objeto.getDescricaoApontamento());   
+            ps.setString(3, objeto.getRisco());
+            ps.setString(4, objeto.getNomeAuditor());
+            ps.setString(5, objeto.getNomeAuditoria());
+            ps.setString(6, objeto.getCausa());
+            ps.setString(7, objeto.getConsequencia());
+            ps.setString(8, objeto.getRecomendacao());
+            
+            System.out.println("Apontamento cadastrado com sucesso!!!!");
+            
             ps.execute();
             ps.close();
 
@@ -326,5 +335,53 @@ public class Dao {
         }
 
     }
-
+    
+    public List<Auditoria> getNomeAuditoria(){
+        List<Auditoria> lista = new ArrayList();
+        String sql = "SELECT NOME_AUDITORIA AS nomeAuditoria FROM TBL_AUDITORIA";
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Auditoria objeto = new Auditoria();
+                objeto.setNomeAuditoria(rs.getString("nomeAuditoria"));
+                lista.add(objeto);
+            }
+            
+            ps.close();
+            rs.close();
+            return lista;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Colaborador> getNomeAuditor(){
+        List<Colaborador> lista = new ArrayList();
+        String sql = "SELECT NOME_COLABORADOR AS nomeAuditor FROM TBL_COLABORADOR";
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Colaborador objeto = new Colaborador();
+                objeto.setNomeAuditor(rs.getString("nomeAuditor"));
+                lista.add(objeto);
+            }
+            
+            ps.close();
+            rs.close();
+            return lista;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    
 }

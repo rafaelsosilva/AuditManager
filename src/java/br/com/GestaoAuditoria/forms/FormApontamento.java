@@ -14,6 +14,7 @@ import br.com.GestaoAuditoria.dao.Dao;
 
 public class FormApontamento {
     
+    private String tituloApontamento;
     private String descricaoApontamento;
     private String risco;
     private String nomeAuditor;
@@ -21,11 +22,13 @@ public class FormApontamento {
     private String causa;
     private String consequencia;
     private String recomendacao;
+    
     private Apontamento objeto;
     private Dao dao;
     
     public FormApontamento(){     
         
+        this.tituloApontamento="";
         this.descricaoApontamento="";
         this.risco="";
         this.nomeAuditor="";
@@ -34,9 +37,20 @@ public class FormApontamento {
         this.consequencia="";
         this.recomendacao="";
         
+        
         this.objeto = new Apontamento();
         this.dao = new Dao();
         
+    }
+    
+    public void setTituloApontamento(String tituloApontamento){
+        this.tituloApontamento=tituloApontamento;
+        this.objeto.setTituloApontamento(tituloApontamento);
+        
+    }
+    
+    public String getTituloApontamento(){
+        return this.tituloApontamento;
     }
     
     public void setDescricaoApontamento(String descricaoApontamento){        
@@ -55,6 +69,25 @@ public class FormApontamento {
     
     public String getRisco(){
         return this.risco;
+    }
+    
+    public void setNomeAuditor(String nomeAuditor){
+        this.nomeAuditor=nomeAuditor;
+        this.objeto.setNomeAuditor(nomeAuditor);
+    }
+    
+    public String getNomeAuditor(){
+        return this.nomeAuditor;
+    }
+    
+    public void setNomeAuditoria(String nomeAuditoria){
+        this.nomeAuditoria=nomeAuditoria;
+        this.objeto.setNomeAuditoria(nomeAuditoria);
+        
+    }
+    
+    public String getNomeAuditoria(){
+        return this.nomeAuditoria;
     }
     
     public void setCausa(String causa){
@@ -78,33 +111,12 @@ public class FormApontamento {
     public void setRecomendacao(String recomendacao){
         this.recomendacao=recomendacao;
         this.objeto.setRecomendacao(recomendacao);
+        this.dao.addApontamento(objeto);
+        
     }
     
     public String getRecomendacao(){
         return this.recomendacao;
     }
     
-    public void setNomeAuditor(String nomeAuditor){
-        this.nomeAuditor=nomeAuditor;
-        this.objeto.setNomeAuditor(nomeAuditor);
-    }
-    
-    public String getNomeAuditor(){
-        return this.nomeAuditor;
-    }
-    
-    public void setNomeAuditoria(String nomeAuditoria){
-        this.nomeAuditoria=nomeAuditoria;
-        this.objeto.setNomeAuditoria(nomeAuditoria);
-        this.dao.addApontamento(objeto);
-   
-    }
-    
-    public String getNomeAuditoria(){
-        return this.nomeAuditoria;
-    }
-    
-    
-    
-  
 }
