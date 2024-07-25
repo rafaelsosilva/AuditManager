@@ -14,7 +14,7 @@ import br.com.GestaoAuditoria.dao.Dao;
 
 public class FormCheckPoint {
     
-    private String descricaoCheckPoint;
+    private String descricaoTipoCheckPoint;
     private String nomeAuditor;
     private String nomeAuditoria;
     private CheckPoint objeto;
@@ -22,7 +22,7 @@ public class FormCheckPoint {
     
     public FormCheckPoint(){
         
-        this.descricaoCheckPoint="";
+        this.descricaoTipoCheckPoint="";
         this.nomeAuditor="";
         this.nomeAuditoria="";
         this.objeto = new CheckPoint();
@@ -30,13 +30,13 @@ public class FormCheckPoint {
         
     }
     
-    public void setDescricaoCheckPoint(String descricaoCheckPoint){
-        this.descricaoCheckPoint=descricaoCheckPoint;
-        this.objeto.setDescricaoCheckPoint(descricaoCheckPoint);
+    public void setDescricaoTipoCheckPoint(String descricaoTipoCheckPoint){
+        this.descricaoTipoCheckPoint=descricaoTipoCheckPoint;
+        this.objeto.setDescricaoTipoCheckPoint(descricaoTipoCheckPoint);
     }
     
-    public String getDescricaoCheckPoint(){
-        return this.descricaoCheckPoint;
+    public String getDescricaoTipoCheckPoint(){
+        return this.descricaoTipoCheckPoint;
     }
     
     public void setNomeAuditor(String nomeAuditor){

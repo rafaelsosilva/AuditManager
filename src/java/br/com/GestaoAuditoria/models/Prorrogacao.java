@@ -11,12 +11,30 @@ package br.com.GestaoAuditoria.models;
 public class Prorrogacao {
     
     private String descricaoPlanoAcao;
+    private String tituloPlanoAcao;
     private String periodoPlanoAcao;
+    private String periodoProrrogacao;
     private String nomeAuditor;
     private String nomeAprovador;
     private String dataAprovacao;
     private String statusRevisao;
     private String descricaoRevisao;
+    
+    public void setTituloPlanoAcao(String tituloPlanoAcao){
+        this.tituloPlanoAcao=tituloPlanoAcao;
+    }
+    
+    public String getTituloPlanoAcao(){
+        return this.tituloPlanoAcao;
+    }
+    
+    public void setPeriodoProrrogacao(String periodoProrrogacao){
+        this.periodoPlanoAcao=periodoProrrogacao;
+    }
+    
+    public String getPeriodoProrrogacao(){
+        return this.periodoProrrogacao;
+    }
     
     public void setDescricaoPlanoAcao(String descricaoPlanoAcao){
         this.descricaoPlanoAcao=descricaoPlanoAcao;

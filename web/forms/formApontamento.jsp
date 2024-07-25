@@ -102,10 +102,6 @@
 
             <div class="container-fluid">
 
-                <!-- comment 
-             <img src="../images/safra.png" alt="Logo Safra">
-             <img src="images/safra.png" alt="Logo Safra">
-                -->
                 <a class="navbar-brand" href="#"></a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">

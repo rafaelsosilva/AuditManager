@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.GestaoAuditoria.models.Auditoria" %>
+<%@page import="br.com.GestaoAuditoria.models.Colaborador" %>
+<%@page import="br.com.GestaoAuditoria.models.CheckPoint" %>
+<%@page import="br.com.GestaoAuditoria.dao.Dao" %>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,13 +26,15 @@
         <script>
             function cadastrarCheckPoint() {
 
-                var varDescricaoCheckPoint = $("#descricaoCheckPoint").val();
+                var varDescricaoTipoCheckPoint = $("#descricaoTipoCheckPoint").val();
                 var varNomeAuditor = $("#nomeAuditor").val();
                 var varNomeAuditoria = $("#nomeAuditoria").val();
 
                 $.ajax({
                     type: 'post',
-                    url: '../responses/responseCheckPoint.jsp?descricaoCheckPoint=' + varDescricaoCheckPoint + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    url: '../responses/responseCheckPoint.jsp?descricaoTipoCheckPoint=' + varDescricaoTipoCheckPoint 
+                            + '&nomeAuditor=' + varNomeAuditor 
+                            + '&nomeAuditoria=' + varNomeAuditoria,
                     success: function (data) {
                         Alert("Cadastrado com Sucesso!!");
                     }
@@ -151,6 +159,8 @@
         </nav>
 
         <br> <br> <br> <br> <br> <br> 
+        
+        <%Dao dao = new Dao();%>
 
         <form method="POST">
 
@@ -158,17 +168,53 @@
 
                 <a class="navbar-brand" href="#"></a>
 
-                <label for="fname">CHECK POINT</label>
-                <input type="text" id="descricaoCheckPoint" name="descricaoApontamento" placeholder="Desricao Check Point">
+                <select id="descricaoTipoCheckPoint" class="form-control input-md" required>
+                    <option value="">SELECIONE O TIPO DE CHECKPOINT</option>
+                    <%
+                        List<CheckPoint> checkpoint = dao.getTipoCheckPoint();
 
-                <label for="nomeAuditor">Nome Auditor</label>
-                <select id="nomeAuditor" name="nomeAuditor">
-                    <option value="">SELECIONE</option>
-                    <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
+                        for (CheckPoint objeto : checkpoint) {
+                    %>
+
+                    <option value="<%=objeto.getDescricaoTipoCheckPoint()%>"><%=objeto.getDescricaoTipoCheckPoint()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
                 </select>
 
-                <label for="nomeAuditoria">Auditoria</label>
-                <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
+                <select id="nomeAuditor" class="form-control input-md" required>
+                    <option value="">SELECIONE O AUDITOR</option>
+                    <%
+                        List<Colaborador> colaborador = dao.getNomeAuditor();
+
+                        for (Colaborador objeto : colaborador) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditor()%>"><%=objeto.getNomeAuditor()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
+                </select>
+
+                <select id="nomeAuditoria" class="form-control input-md" required>
+                    <option value="">SELECIONE UMA AUDITORIA</option>
+                    <%
+                        List<Auditoria> auditoria = dao.getNomeAuditoria();
+
+                        for (Auditoria objeto : auditoria) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditoria()%>"><%=objeto.getNomeAuditoria()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
+                </select>
                 
                 <input type="submit" onclick="cadastrarCheckPoint()">
 

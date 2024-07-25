@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.GestaoAuditoria.models.PlanoAcao" %>
+<%@page import="br.com.GestaoAuditoria.models.Colaborador" %>
+<%@page import="br.com.GestaoAuditoria.dao.Dao" %>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,16 +22,17 @@
         <title>Apontamento</title>
 
         <script>
-            function cadastrarApontamento() {
+            function cadastrarProrrogacao() {
 
-                var varDescricaoApontamento = $("#descricaoApontamento").val();
-                var varRisco = $("#risco").val();
+                var varTituloApontamento = $("#tituloPlanoAcao").val();
+                var varPeriodoProrrogacao = $("#periodoProrrogacao").val();
                 var varNomeAuditor = $("#nomeAuditor").val();
-                var varNomeAuditoria = $("#nomeAuditoria").val();
-
+                
                 $.ajax({
                     type: 'post',
-                    url: '../responses/responseApontamento.jsp?descricaoApontamento=' + varDescricaoApontamento + '&risco=' + varRisco + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    url: '../responses/responseProrrogacao.jsp?tituloPlanoAcao=' + varTituloApontamento 
+                            + '&periodoProrrogacao=' + varPeriodoProrrogacao 
+                            + '&nomeAuditor=' + varNomeAuditor,
                     success: function (data) {
                         Alert("Cadastrado com Sucesso!!");
                     }
@@ -152,6 +157,8 @@
         </nav>
 
         <br> <br> <br> <br> <br> <br> 
+        
+        <%Dao dao = new Dao();%>
 
         <form method="POST">
 
@@ -159,26 +166,44 @@
 
                 <a class="navbar-brand" href="#"></a>
 
-                <label for="fname">Titulo Apontamento</label>
-                <input type="text" id="descricaoApontamento" name="descricaoApontamento" placeholder="Titulo Apontamento">
+                <select id="tituloPlanoAcao" class="form-control input-md" required>
+                    <option value="">SELECIONE O PLANO DE ACAO</option>
+                    <%
+                        List<PlanoAcao> planoAcao = dao.getTituloPlanoAcao();
 
-                <label for="Risco">Risco</label>
-                <select id="risco" name="country">
-                    <option value="ALTO">Alto</option>
-                    <option value="MEDIO">Medio</option>
-                    <option value="BAIXO">Baixo</option>
+                        for (PlanoAcao objeto : planoAcao) {
+                    %>
+
+                    <option value="<%=objeto.getTituloPlanoAcao()%>"><%=objeto.getTituloPlanoAcao()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
                 </select>
 
-                <label for="nomeAuditor">Nome Auditor</label>
-                <select id="nomeAuditor" name="nomeAuditor">
-                    <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
-                    <option value="RAFAEL SOUZA SILVA">PAULO YOKOTA</option>
+                <select id="periodoProrrogacao" class="form-control input-md" required>
+                    <option value="">SELECIONE O PERIODO</option>
+                    <option value="30 DIAS">30 DIAS</option>
                 </select>
 
-                <label for="nomeAuditoria">Auditoria</label>
-                <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
+                <select id="nomeAuditor" class="form-control input-md" required>
+                    <option value="">SELECIONE O AUDITOR</option>
+                    <%
+                        List<Colaborador> colaborador = dao.getNomeAuditor();
+
+                        for (Colaborador objeto : colaborador) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditor()%>"><%=objeto.getNomeAuditor()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
+                </select>
                 
-                <input type="submit" onclick="cadastrarApontamento()">
+                <input type="submit" onclick="cadastrarProrrogacao()">
 
             </div>
 

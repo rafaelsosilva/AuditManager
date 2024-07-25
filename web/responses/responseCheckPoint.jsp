@@ -13,7 +13,7 @@
     </head>
     <body>
         <jsp:useBean id="FormCheckPoint" scope="session" class="br.com.GestaoAuditoria.forms.FormCheckPoint" />
-        <jsp:setProperty name="FormCheckPoint" property="descricaoCheckPoint"/>
+        <jsp:setProperty name="FormCheckPoint" property="descricaoTipoCheckPoint"/>
         <jsp:setProperty name="FormCheckPoint" property="nomeAuditor"/>
         <jsp:setProperty name="FormCheckPoint" property="nomeAuditoria"/>
     </body>

@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.GestaoAuditoria.models.Auditoria" %>
+<%@page import="br.com.GestaoAuditoria.models.Colaborador" %>
+<%@page import="br.com.GestaoAuditoria.dao.Dao" %>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -152,6 +156,9 @@
         </nav>
 
         <br> <br> <br> <br> <br> <br> 
+        
+        <%Dao dao = new Dao();%>
+        
 
         <form method="POST">
 
@@ -169,14 +176,37 @@
                     <option value="BAIXO">Baixo</option>
                 </select>
 
-                <label for="nomeAuditor">Nome Auditor</label>
-                <select id="nomeAuditor" name="nomeAuditor">
-                    <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
-                    <option value="RAFAEL SOUZA SILVA">PAULO YOKOTA</option>
+                <select id="nomeAuditor" class="form-control input-md" required>
+                    <option value="">SELECIONE O AUDITOR</option>
+                    <%
+                        List<Colaborador> colaborador = dao.getNomeAuditor();
+
+                        for (Colaborador objeto : colaborador) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditor()%>"><%=objeto.getNomeAuditor()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
                 </select>
 
-                <label for="nomeAuditoria">Auditoria</label>
-                <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
+                <select id="nomeAuditoria" class="form-control input-md" required>
+                    <option value="">SELECIONE UMA AUDITORIA</option>
+                    <%
+                        List<Auditoria> auditoria = dao.getNomeAuditoria();
+
+                        for (Auditoria objeto : auditoria) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditoria()%>"><%=objeto.getNomeAuditoria()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
+                </select>
                 
                 <input type="submit" onclick="cadastrarApontamento()">
 

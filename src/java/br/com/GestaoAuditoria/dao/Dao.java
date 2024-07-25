@@ -179,14 +179,15 @@ public class Dao {
 
         try {
 
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PRORROGACAO(?,?,?,?,?)");
-            ps.setString(1, objeto.getDescricaoPlanoAcao());
-            ps.setString(2, objeto.getPeriodoPlanoAcao());
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PRORROGACAO_00_02(?,?,?)");
+            ps.setString(1, objeto.getTituloPlanoAcao());
+            ps.setString(2, objeto.getPeriodoProrrogacao());
             ps.setString(3, objeto.getNomeAuditor());
-            ps.setString(4, objeto.getNomeAprovador());
-            ps.setString(5, objeto.getDataAprovacao());
+            
             ps.execute();
             ps.close();
+            
+            System.out.println("Prorrogacao cadastrada com sucesso!!!");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -197,14 +198,19 @@ public class Dao {
 
         try {
 
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PLANO_ACAO(?,?,?,?,?)");
-            ps.setString(1, objeto.getDescricaoApontamento());
-            ps.setString(2, objeto.getDescricaoPlanoAcao());
-            ps.setString(3, objeto.getDataInicio());
-            ps.setString(4, objeto.getDataVenvimento());
-            ps.setString(5, objeto.getNomeAuditor());
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PLANO_ACAO_04(?,?,?,?,?,?)");
+            
+            ps.setString(1, objeto.getTituloPlanoAcao());
+            ps.setString(2, objeto.getTituloApontamento());
+            ps.setString(3, objeto.getDescricaoPlanoAcao());
+            ps.setString(4, objeto.getDataInicio());
+            ps.setString(5, objeto.getDataVenvimento());
+            ps.setString(6, objeto.getNomeAuditor());
+            
             ps.execute();
             ps.close();
+            
+            System.out.println("Plano de acao cadastrado com sucesso!!!");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -372,6 +378,78 @@ public class Dao {
             while(rs.next()){
                 Colaborador objeto = new Colaborador();
                 objeto.setNomeAuditor(rs.getString("nomeAuditor"));
+                lista.add(objeto);
+            }
+            
+            ps.close();
+            rs.close();
+            return lista;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Apontamento> getApontamento(){
+        List<Apontamento> lista = new ArrayList();
+        String sql = "SELECT TITULO_APONTAMENTO AS tituloApontamento FROM TBL_APONTAMENTO";
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Apontamento objeto = new Apontamento();
+                objeto.setTituloApontamento(rs.getString("tituloApontamento"));
+                lista.add(objeto);
+            }
+            
+            ps.close();
+            rs.close();
+            return lista;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<CheckPoint> getTipoCheckPoint(){
+        List<CheckPoint> lista = new ArrayList();
+        String sql = "SELECT DESCRICAO_TIPO_CHECKPOINT AS descricaoTipoCheckPoint FROM TBL_TIPO_CHECKPOINT";
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                CheckPoint objeto = new CheckPoint();
+                objeto.setDescricaoTipoCheckPoint(rs.getString("descricaoTipoCheckPoint"));
+                lista.add(objeto);
+            }
+            
+            ps.close();
+            rs.close();
+            return lista;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<PlanoAcao> getTituloPlanoAcao(){
+        List<PlanoAcao> lista = new ArrayList();
+        String sql = "SELECT TITULO_PLANO_ACAO AS tituloPlanoAcao FROM TBL_PLANO_ACAO";
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                PlanoAcao objeto = new PlanoAcao();
+                objeto.setTituloPlanoAcao(rs.getString("tituloPlanoAcao"));
                 lista.add(objeto);
             }
             

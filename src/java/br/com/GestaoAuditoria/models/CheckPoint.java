@@ -11,6 +11,7 @@ package br.com.GestaoAuditoria.models;
 public class CheckPoint {
     
     private String descricaoCheckPoint;
+    private String descricaoTipoCheckPoint;
     private String nomeAuditor;
     private String nomeAuditoria;
     
@@ -20,6 +21,14 @@ public class CheckPoint {
     
     public String getDescricaoCheckPoint(){
         return this.descricaoCheckPoint;
+    }
+    
+    public void setDescricaoTipoCheckPoint(String descricaoTipoCheckPoint){
+        this.descricaoTipoCheckPoint=descricaoTipoCheckPoint;
+    }
+    
+    public String getDescricaoTipoCheckPoint(){
+        return this.descricaoTipoCheckPoint;
     }
     
     public void setNomeAuditor(String nomeAuditor){

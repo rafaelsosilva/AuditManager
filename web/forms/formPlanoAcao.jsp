@@ -5,6 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.GestaoAuditoria.models.Auditoria" %>
+<%@page import="br.com.GestaoAuditoria.models.Apontamento" %>
+<%@page import="br.com.GestaoAuditoria.models.Colaborador" %>
+<%@page import="br.com.GestaoAuditoria.dao.Dao" %>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,16 +23,25 @@
         <title>Apontamento</title>
 
         <script>
-            function cadastrarApontamento() {
+            function cadastrarPlanoAcao() {
 
-                var varDescricaoApontamento = $("#descricaoApontamento").val();
-                var varRisco = $("#risco").val();
+                var varTituloPlanoAcao = $("#tituloPlanoAcao").val();
+                var varTituloApontamento = $("#tituloApontamento").val();
+                var varDescricaoPlanoAcao = $("#descricaoPlanoAcao").val();
+                var varDataInicio = $("#dataInicio").val();
+                var varDataVencimento = $("#dataVencimento").val();
                 var varNomeAuditor = $("#nomeAuditor").val();
-                var varNomeAuditoria = $("#nomeAuditoria").val();
+
 
                 $.ajax({
                     type: 'post',
-                    url: '../responses/responseApontamento.jsp?descricaoApontamento=' + varDescricaoApontamento + '&risco=' + varRisco + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    url: '../responses/responsePlanoAcao.jsp?tituloPlanoAcao=' + varTituloPlanoAcao
+                            + '&tituloApontamento=' + varTituloApontamento
+                            + '&descricaoPlanoAcao=' + varDescricaoPlanoAcao
+                            + '&dataInicio=' + varDataInicio
+                            + '&dataVencimento=' + varDataVencimento
+                            + '&nomeAuditor=' + varNomeAuditor,
+
                     success: function (data) {
                         Alert("Cadastrado com Sucesso!!");
                     }
@@ -104,7 +118,7 @@
 
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                           
+
                             <li class="nav-item">
                                 <a class="nav-link" href="formAuditoria.jsp">Cadastro de Auditorias</a>
                             </li>
@@ -153,32 +167,56 @@
 
         <br> <br> <br> <br> <br> <br> 
 
+        <%Dao dao = new Dao();%>
+
         <form method="POST">
 
             <div class="container">
 
                 <a class="navbar-brand" href="#"></a>
-
-                <label for="fname">Titulo Apontamento</label>
-                <input type="text" id="descricaoApontamento" name="descricaoApontamento" placeholder="Titulo Apontamento">
-
-                <label for="Risco">Risco</label>
-                <select id="risco" name="country">
-                    <option value="ALTO">Alto</option>
-                    <option value="MEDIO">Medio</option>
-                    <option value="BAIXO">Baixo</option>
-                </select>
-
-                <label for="nomeAuditor">Nome Auditor</label>
-                <select id="nomeAuditor" name="nomeAuditor">
-                    <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
-                    <option value="RAFAEL SOUZA SILVA">PAULO YOKOTA</option>
-                </select>
-
-                <label for="nomeAuditoria">Auditoria</label>
-                <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
                 
-                <input type="submit" onclick="cadastrarApontamento()">
+                <input type="text" id="tituloPlanoAcao" name="tituloPlanoAcao" placeholder="DESCREVA O TITULO DO PLANO DE ACAO">
+
+                <select id="tituloApontamento" class="form-control input-md" required>
+                    <option value="">SELECIONE O APONTAMENTO</option>
+                    <%
+                        List<Apontamento> apontamento = dao.getApontamento();
+
+                        for (Apontamento objeto : apontamento) {
+                    %>
+
+                    <option value="<%=objeto.getTituloApontamento()%>"><%=objeto.getTituloApontamento()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
+                </select>
+
+
+                <textarea class="form-control" id="descricaoPlanoAcao" rows="2" placehÍolder="Descreva o Plano de Acao"></textarea>
+
+                <input type="text" id="dataInicio" name="dataInicio" placeholder="Data Inicio">
+
+                <input type="text" id="dataVencimento" name="dataVencimento" placeholder="Data Vencimento">
+
+                <select id="nomeAuditor" class="form-control input-md" required>
+                    <option value="">SELECIONE O AUDITOR</option>
+                    <%
+                        List<Colaborador> colaborador = dao.getNomeAuditor();
+
+                        for (Colaborador objeto : colaborador) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditor()%>"><%=objeto.getNomeAuditor()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
+                </select>
+
+                <input type="submit" onclick="cadastrarPlanoAcao()">
 
             </div>
 
