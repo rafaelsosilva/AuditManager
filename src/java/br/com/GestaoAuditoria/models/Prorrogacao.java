@@ -29,7 +29,7 @@ public class Prorrogacao {
     }
     
     public void setPeriodoProrrogacao(String periodoProrrogacao){
-        this.periodoPlanoAcao=periodoProrrogacao;
+        this.periodoProrrogacao=periodoProrrogacao;
     }
     
     public String getPeriodoProrrogacao(){

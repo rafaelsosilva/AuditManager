@@ -22,16 +22,17 @@
         <title>Apontamento</title>
 
         <script>
-            function cadastrarApontamento() {
+            function cadastrarMatrizRisco() {
 
-                var varDescricaoApontamento = $("#descricaoApontamento").val();
-                var varRisco = $("#risco").val();
+                var varNomeMatrizRisco = $("#nomeMatrizRisco").val();
                 var varNomeAuditor = $("#nomeAuditor").val();
                 var varNomeAuditoria = $("#nomeAuditoria").val();
 
                 $.ajax({
                     type: 'post',
-                    url: '../responses/responseApontamento.jsp?descricaoApontamento=' + varDescricaoApontamento + '&risco=' + varRisco + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    url: '../responses/responseMatrizRisco.jsp?nomeMatrizRisco=' + varNomeMatrizRisco 
+                            + '&nomeAuditor=' + varNomeAuditor 
+                            + '&nomeAuditoria=' + varNomeAuditoria,
                     success: function (data) {
                         Alert("Cadastrado com Sucesso!!");
                     }
@@ -155,7 +156,7 @@
 
         </nav>
 
-        <br> <br> <br> <br> <br> <br> 
+        <br> <br> <br> 
         
         <%Dao dao = new Dao();%>
         
@@ -166,15 +167,7 @@
 
                 <a class="navbar-brand" href="#"></a>
 
-                <label for="fname">Titulo Apontamento</label>
-                <input type="text" id="descricaoApontamento" name="descricaoApontamento" placeholder="Titulo Apontamento">
-
-                <label for="Risco">Risco</label>
-                <select id="risco" name="country">
-                    <option value="ALTO">Alto</option>
-                    <option value="MEDIO">Medio</option>
-                    <option value="BAIXO">Baixo</option>
-                </select>
+                <input type="text" id="nomeMatrizRisco" name="nomeMatrizRisco" placeholder="Titulo Matriz de Risco">
 
                 <select id="nomeAuditor" class="form-control input-md" required>
                     <option value="">SELECIONE O AUDITOR</option>
@@ -208,7 +201,7 @@
                     %>
                 </select>
                 
-                <input type="submit" onclick="cadastrarApontamento()">
+                <input type="submit" onclick="cadastrarMatrizRisco()">
 
             </div>
 

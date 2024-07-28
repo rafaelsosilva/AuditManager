@@ -19,10 +19,10 @@ public class AddRelatorio {
         Relatorio objeto = new Relatorio();
         Dao dao = new Dao();
         
-        objeto.setDataEmissao("01/04/2024");
+        objeto.setNomeRelatorio("OPA OPA OPA");
         objeto.setRisco("ALTO");
         objeto.setNomeAuditor("RAFAEL SOUZA SILVA");
-        objeto.setNomeAuditoria("DEVSECOPS");
+        objeto.setNomeAuditoria("2024 - LUXEMBURGO");
         dao.addRelatorio(objeto);
         
     }

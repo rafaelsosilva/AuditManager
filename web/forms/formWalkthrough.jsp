@@ -5,6 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.GestaoAuditoria.models.Auditoria" %>
+<%@page import="br.com.GestaoAuditoria.models.Colaborador" %>
+<%@page import="br.com.GestaoAuditoria.dao.Dao" %>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,19 +20,24 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-        <title>Apontamento</title>
+        <title>Walkthrough</title>
 
         <script>
-            function cadastrarApontamento() {
+            function cadastrarWalkthrough() {
 
-                var varDescricaoApontamento = $("#descricaoApontamento").val();
-                var varRisco = $("#risco").val();
+                var varObjetivo = $("#objetivo").val();
+                var varParticipantes = $("#participantes").val();
+                var varDescricaoWalkthrough = $("#descricaoWalkthrough").val();
                 var varNomeAuditor = $("#nomeAuditor").val();
                 var varNomeAuditoria = $("#nomeAuditoria").val();
 
                 $.ajax({
                     type: 'post',
-                    url: '../responses/responseApontamento.jsp?descricaoApontamento=' + varDescricaoApontamento + '&risco=' + varRisco + '&nomeAuditor=' + varNomeAuditor + '&nomeAuditoria=' + varNomeAuditoria,
+                    url: '../responses/responseWalkthrough.jsp?objetivo=' + varObjetivo
+                            + '&participantes=' + varParticipantes
+                            + '&descricaoWalkthrough=' + varDescricaoWalkthrough
+                            + '&nomeAuditoria=' + varNomeAuditoria
+                            + '&nomeAuditor=' + varNomeAuditor,
                     success: function (data) {
                         Alert("Cadastrado com Sucesso!!");
                     }
@@ -104,7 +114,7 @@
 
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                          
+
                             <li class="nav-item">
                                 <a class="nav-link" href="formAuditoria.jsp">Cadastro de Auditorias</a>
                             </li>
@@ -151,7 +161,9 @@
 
         </nav>
 
-        <br> <br> <br> <br> <br> <br> 
+        <br> <br> <br> 
+
+        <%Dao dao = new Dao();%>
 
         <form method="POST">
 
@@ -159,26 +171,50 @@
 
                 <a class="navbar-brand" href="#"></a>
 
-                <label for="fname">Titulo Apontamento</label>
-                <input type="text" id="descricaoApontamento" name="descricaoApontamento" placeholder="Titulo Apontamento">
+                <textarea class="form-control" id="objetivo" rows="2" placeholder="DESCREVA O OBJETIVO"></textarea>
+                <br> 
 
-                <label for="Risco">Risco</label>
-                <select id="risco" name="country">
-                    <option value="ALTO">Alto</option>
-                    <option value="MEDIO">Medio</option>
-                    <option value="BAIXO">Baixo</option>
+                <textarea class="form-control" id="participantes" rows="2" placeholder="DESCREVA OS PARTICIPANTES"></textarea>
+                <br> 
+
+
+                <textarea class="form-control" id="descricaoWalkthrough" rows="2" placeholder="DESCREVA O WALKTHROUGH"></textarea>
+                <br> 
+
+                <select id="nomeAuditoria" class="form-control input-md" required>
+                    <option value="">SELECIONE UMA AUDITORIA</option>
+                    <%
+                        List<Auditoria> auditoria = dao.getNomeAuditoria();
+
+                        for (Auditoria objeto : auditoria) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditoria()%>"><%=objeto.getNomeAuditoria()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
+                </select>
+                <br> 
+
+                <select id="nomeAuditor" class="form-control input-md" required>
+                    <option value="">SELECIONE O AUDITOR</option>
+                    <%
+                        List<Colaborador> colaborador = dao.getNomeAuditor();
+
+                        for (Colaborador objeto : colaborador) {
+                    %>
+
+                    <option value="<%=objeto.getNomeAuditor()%>"><%=objeto.getNomeAuditor()%>
+                    </option>
+
+                    <%
+                        }
+                    %>
                 </select>
 
-                <label for="nomeAuditor">Nome Auditor</label>
-                <select id="nomeAuditor" name="nomeAuditor">
-                    <option value="RAFAEL SOUZA SILVA">RAFAEL SOUZA SILVA</option>
-                    <option value="RAFAEL SOUZA SILVA">PAULO YOKOTA</option>
-                </select>
-
-                <label for="nomeAuditoria">Auditoria</label>
-                <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
-                
-                <input type="submit" onclick="cadastrarApontamento()">
+                <input type="submit" onclick="cadastrarWalkthrough()">
 
             </div>
 

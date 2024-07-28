@@ -21,7 +21,9 @@ public class AddWalkthrough {
         
         objeto.setDescricaoWalkthrough("LEVANTAMENTO DE INFORMACOES - 01");
         objeto.setNomeAuditor("RAFAEL SOUZA SILVA");
-        objeto.setNomeAuditoria("DEVSECOPS");
+        objeto.setNomeAuditoria("2024 - LUXEMBURGO");
+        objeto.setObjetivo("OPA OPAO PAA");
+        objeto.setParticipantes("PARARARARA");
         dao.addWalkthrough(objeto);
     }
     

@@ -126,10 +126,13 @@ public class Dao {
         
         try{
             
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_WALKTHROUGH(?,?,?)");
-            ps.setString(1, objeto.getDescricaoWalkthrough());
-            ps.setString(2, objeto.getNomeAuditoria());
-            ps.setString(3, objeto.getNomeAuditor());
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_WALKTHROUGH_00_03(?,?,?,?,?)");
+            
+            ps.setString(1, objeto.getObjetivo());
+            ps.setString(2, objeto.getParticipantes());
+            ps.setString(3, objeto.getDescricaoWalkthrough());
+            ps.setString(4, objeto.getNomeAuditoria());
+            ps.setString(5, objeto.getNomeAuditor());
             
             ps.execute();
             ps.close();
@@ -162,7 +165,7 @@ public class Dao {
         try {
 
             PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_RELATORIO(?,?,?,?)");
-            ps.setString(1, objeto.getDataEmissao());
+            ps.setString(1, objeto.getNomeRelatorio());
             ps.setString(2, objeto.getRisco());
             ps.setString(3, objeto.getNomeAuditoria());
             ps.setString(4, objeto.getNomeAuditor());
@@ -179,7 +182,7 @@ public class Dao {
 
         try {
 
-            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PRORROGACAO_00_02(?,?,?)");
+            PreparedStatement ps = this.connection.prepareCall("CALL GADEV.SP_ADD_PRORROGACAO_00_03(?,?,?)");
             ps.setString(1, objeto.getTituloPlanoAcao());
             ps.setString(2, objeto.getPeriodoProrrogacao());
             ps.setString(3, objeto.getNomeAuditor());
