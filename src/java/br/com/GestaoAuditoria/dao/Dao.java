@@ -465,4 +465,33 @@ public class Dao {
         }
     }
     
+    public List<Auditoria> getMenuAuditoria(){
+        List<Auditoria> lista = new ArrayList();
+        String sql = "SELECT AUDITORIA,INICIO,PREVISAO,RESPONSAVEL FROM VW_MENU_AUDITORIA_00_01";
+        
+        try{
+            
+            PreparedStatement ps = this.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Auditoria objeto = new Auditoria();
+                objeto.setAuditoria(rs.getString("AUDITORIA"));
+                objeto.setInicio(rs.getString("INICIO"));
+                objeto.setPrevisao(rs.getString("PREVISAO"));
+                objeto.setResponsavel(rs.getString("RESPONSAVEL"));
+                lista.add(objeto);
+                
+                System.out.println("RELATORIO EXECUTADO COM SUCESSO!!!");
+            }
+            
+            ps.close();
+            rs.close();
+            return lista;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    
 }

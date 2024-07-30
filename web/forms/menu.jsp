@@ -1,10 +1,15 @@
-<%-- 
+Ï<%-- 
     Document   : menu
     Created on : 7 de abr. de 2024, 12:05:38
     Author     : rafaelsilva
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.GestaoAuditoria.dao.Dao"%>
+<%@page import="br.com.GestaoAuditoria.models.Auditoria"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -85,7 +90,7 @@
 
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link" href="formAuditoria.jsp">Cadastro de Auditorias</a>
                             </li>
@@ -131,6 +136,41 @@
             </div>
 
         </nav>
+
+        <br><br>
+
+        <div class="container">
+
+            <table  class="table table-striped">
+                <thead>
+                    <tr style="text-align:'center'">
+                        <th>Auditoria</th>
+                        <th>Inicio</th>
+                        <th>Previsao</th>
+                        <th>Responsavel</th>
+
+                    </tr>
+                </thead>
+                <%
+                    Dao dao = new Dao();
+                    List<Auditoria> lista = dao.getMenuAuditoria();
+
+                    for (Auditoria objeto : lista) {
+                %>
+
+                <tbody>
+                    <tr>
+                        <td align=left><%=objeto.getAuditoria()%></td>
+                        <td align=left><%=objeto.getInicio()%></td>
+                        <td align=left><%=objeto.getPrevisao()%></td>
+                        <td align=left><%=objeto.getResponsavel()%></td>
+                    </tr>
+                </tbody>
+                <%
+                    }
+                %>
+            </table>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 

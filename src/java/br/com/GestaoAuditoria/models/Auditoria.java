@@ -16,7 +16,42 @@ public class Auditoria {
     private String dataFim;
     private String ano;
     private String nomeResponsavel;
+    private String auditoria;
+    private String inicio;
+    private String previsao;
+    private String responsavel;
     
+    public void setAuditoria(String auditoria){
+        this.auditoria=auditoria;
+    }
+    
+    public String getAuditoria(){
+        return this.auditoria;
+    }
+    
+    public void setInicio(String inicio){
+        this.inicio=inicio;
+    }
+    
+    public String getInicio(){
+        return this.inicio;
+    }
+    
+    public void setPrevisao(String previsao){
+        this.previsao=previsao;
+    }
+    
+    public String getPrevisao(){
+        return this.previsao;
+    }
+    
+    public void setResponsavel(String responsavel){
+        this.responsavel=responsavel;
+    }
+    
+    public String getResponsavel(){
+        return this.responsavel;
+    }
     
     public void setNomeAuditoria(String nomeAuditoria){
         this.nomeAuditoria=nomeAuditoria;
