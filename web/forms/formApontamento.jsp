@@ -53,6 +53,8 @@
             }
         </script>
 
+        
+
     </head>
 
     <style>
@@ -94,6 +96,8 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+
     </style>
 
     <body>
@@ -114,7 +118,6 @@
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-
 
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
@@ -179,7 +182,6 @@
 
                 <textarea class="form-control" id="descricaoApontamento" rows="2" placeholder="Descricao da Apontamento"></textarea>
 
-
                 <select id="risco" name="country">
                     <option value="">SELECIONE O RISCO</option>
                     <option value="ALTO">ALTO</option>
@@ -203,7 +205,6 @@
                     %>
                 </select>
 
-
                 <select id="nomeAuditoria" class="form-control input-md" required>
                     <option value="">SELECIONE UMA AUDITORIA</option>
                     <%
@@ -222,15 +223,15 @@
 
                 <textarea class="form-control" id="causa" rows="2" placeholder="Descricao da Causa"></textarea>
 
-
                 <textarea class="form-control" id="consequencia" rows="2" placeholder="Descricao da Consequencia"></textarea>
-
 
                 <textarea class="form-control" id="recomendacao" rows="2" placeholder="Descricao da Recomendacao"></textarea>
 
-                <input type="submit" onclick="cadastrarApontamento()">
+                <input type="submit" onclick="cadastrarApontamento()"> 
 
             </div>
+
+
 
         </form>
 

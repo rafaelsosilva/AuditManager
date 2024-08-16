@@ -140,9 +140,9 @@
         <br><br>
 
         <div class="container">
-
-            <table  class="table table-striped">
-                <thead>
+            
+            <table  class="table">
+                <thead class="thead-dark">
                     <tr style="text-align:'center'">
                         <th>Auditoria</th>
                         <th>Inicio</th>
@@ -151,26 +151,32 @@
 
                     </tr>
                 </thead>
+                
+                <br>
                 <%
                     Dao dao = new Dao();
                     List<Auditoria> lista = dao.getMenuAuditoria();
 
                     for (Auditoria objeto : lista) {
                 %>
-
+                
+                
                 <tbody>
+                
                     <tr>
                         <td align=left><%=objeto.getAuditoria()%></td>
                         <td align=left><%=objeto.getInicio()%></td>
                         <td align=left><%=objeto.getPrevisao()%></td>
                         <td align=left><%=objeto.getResponsavel()%></td>
                     </tr>
+                
                 </tbody>
                 <%
                     }
                 %>
             </table>
-        </div>
+            </div>
+        
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 

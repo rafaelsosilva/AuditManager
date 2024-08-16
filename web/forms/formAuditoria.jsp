@@ -17,6 +17,16 @@
         <title>Cadastro de Auditorias</title>
 
         <script>
+            export default {
+                data() {
+                    return {
+                        value: ''
+                    }
+                }
+            }
+        </script>
+
+        <script>
             function cadastrarApontamento() {
 
                 var varTituloApontamento = $("#tituloApontamento").val();
@@ -51,7 +61,7 @@
 
     <style>
         input[type=text], select {
-            width: 100%;
+            width: 20%;
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
@@ -61,7 +71,7 @@
         }
 
         input[type=submit] {
-            width: 100%;
+            width: 20%;
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
@@ -80,13 +90,13 @@
             background-color: #f2f2f2;
             padding: 20px;
             box-sizing: content-box;
-            width: 100%;
+            width: 20%;
         }
 
         .container {
             width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 20%;
+            margin-right: 20%;
         }
     </style>
 
@@ -98,24 +108,38 @@
 
     <!-- <script src="JS/dao.js" type="text/javascript"></script> -->
     <script>
-         function cadastrarAuditoria() {
+            function cadastrarAuditoria() {
 
-             var varNomeAuditoria = $("#nomeAuditoria").val();
-             var varDataInicio = $("#dataInicio").val();
-             var varDataFim = $("#dataFim").val();
-             var varNomeResponsavel = $("#nomeResponsavel").val();
+                var varNomeAuditoria = $("#nomeAuditoria").val();
+                var varDataInicio = $("#dataInicio").val();
+                var varDataFim = $("#dataFim").val();
+                var varNomeResponsavel = $("#nomeResponsavel").val();
 
-             $.ajax({
-                 type: 'post',
-                 url: '../responses/responseAuditoria.jsp?nomeAuditoria=' + varNomeAuditoria
-                         + '&dataInicio=' + varDataInicio
-                         + '&dataFim=' + varDataFim
-                         + '&nomeResponsavel=' + varNomeResponsavel,
-                 success: function (data) {
-                     Alert("Cadastrado com Sucesso!!");
-                 }
-             });
-         }
+                $.ajax({
+                    type: 'post',
+                    url: '../responses/responseAuditoria.jsp?nomeAuditoria=' + varNomeAuditoria
+                            + '&dataInicio=' + varDataInicio
+                            + '&dataFim=' + varDataFim
+                            + '&nomeResponsavel=' + varNomeResponsavel,
+                    success: function (data) {
+                        Alert("Cadastrado com Sucesso!!");
+                    }
+                });
+            }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                format: 'mm/dd/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
     </script>
 
 </head>
@@ -126,10 +150,6 @@
 
         <div class="container-fluid">
 
-            <!-- comment 
-         <img src="../images/safra.png" alt="Logo Safra">
-         <img src="images/safra.png" alt="Logo Safra">
-            -->
             <a class="navbar-brand" href="#"></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -193,7 +213,7 @@
 
     </nav>
 
-    <br> <br> <br> <br>
+    <br> <br> <br>
 
     <%Dao dao = new Dao();%>
 
@@ -203,15 +223,15 @@
 
             <a class="navbar-brand" href="#"></a>
 
-
             <input type="text" id="nomeAuditoria" name="nomeAuditoria" placeholder="Nome Auditoria">
 
-            <input type="text" id="dataInicio" name="descricaoApontamento" placeholder="Data Inicio">
+            <input class="form-control" id="dataInicio" name="date" placeholder="Data Inicio" type="text"/>
 
-            <input type="text" id="dataFim" name="descricaoApontamento" placeholder="Data Conclusao">
-
+            <input class="form-control" id="dataFim" name="date" placeholder="Data Conclusao" type="text"/>
+            
             <select id="nomeAuditor" class="form-control input-md" required>
                 <option value="">SELECIONE O AUDITOR</option>
+                
                 <%
                     List<Colaborador> colaborador = dao.getNomeAuditor();
 
@@ -224,6 +244,7 @@
                 <%
                     }
                 %>
+                
             </select>
 
             <input type="submit" onclick="cadastrarAuditoria()">
@@ -233,6 +254,16 @@
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 </body>
 
